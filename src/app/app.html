@@ -1,0 +1,58 @@
+<h1>Minha Lista de Tarefas -- Manual</h1>
+<ul>
+  <li>Comprar leite</li>
+  <li>Enviar e-mail para o chefe</li>
+  <li>Fazer exercícios</li>
+</ul>
+
+<hr />
+
+<input #novaTarefa type="text" placeholder="Digite uma tarefa">
+<button (click)="adicionarTarefa(novaTarefa.value); novaTarefa.value=''">
+  Adicionar
+</button>
+<h1>Minha Lista de Tarefas -- Dinâmica</h1>
+<ul>
+  <li *ngFor="let tarefa of tarefas; let i = index;">
+    {{ tarefa }}
+    <button (click)="removerTarefa(i)">X</button>
+  </li>
+</ul>
+
+<hr />
+
+<div class="container mt-5">
+  <div class="card shadow">
+    <div class="card-body">
+
+      <h2 class="card-title text-center mb-4">
+        Lista de Tarefas
+      </h2>
+
+      <!-- Input -->
+      <div class="input-group mb-3">
+        <input #novaTarefa2 type="text" class="form-control" placeholder="Digite uma tarefa">
+        <button class="btn btn-primary" (click)="adicionarTarefa(novaTarefa2.value); novaTarefa2.value=''">
+          Adicionar
+        </button>
+      </div>
+
+      <!-- Lista -->
+      <ul class="list-group">
+        <p *ngIf="tarefas.length === 0" class="text-center text-muted">
+          Nenhuma tarefa cadastrada
+        </p>
+        <li *ngFor="let tarefa of tarefas; let i = index"
+          class="list-group-item d-flex justify-content-between align-items-center">
+          {{ tarefa }}
+
+          <button class="btn btn-danger btn-sm" (click)="removerTarefa(i)">
+            X
+          </button>
+
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</div>
